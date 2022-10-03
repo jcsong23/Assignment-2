@@ -30,13 +30,13 @@
 
         var instructions = {
             type: jsPsychHtmlButtonResponse,
-            stimulus: 'You will be presented with a trivia question for 5 seconds, immediately followed by a “prime” word. After seeing the prime word for a brief duration (250 ms), you are asked if you know the answer, don’t know the answer, have another word in mind, or if the answer is at the tip of their tongues. Once you indicate your state, will will be asked to type in your answer. First of all, you will have a series of practice trials.',
+            stimulus: 'You will be presented with a trivia question for 5 seconds, immediately followed by a “prime” word. After seeing the prime word for a brief duration, you are asked if you know the answer, don’t know the answer, have another word in mind, or if the answer is at the tip of their tongues. Once you indicate your state, you will be asked to type in your answer. To begin, you will have a series of practice trials.',
             choices: ['Click here to advance to next screen'],
             data: {
                 typeoftrial: 'instructions',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             }
         }
 
@@ -47,9 +47,9 @@
             trial_duration: 5000,
             data: {
                 typeoftrial: 'sentence',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             }
         }
 
@@ -60,9 +60,9 @@
             trial_duration: 250,
             data: {
                 typeoftrial: 'prime',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             }
         }
 
@@ -73,9 +73,9 @@
             choices: ['know','do not know','other word in mind','tip of the tongue'],
             data: {
                 typeoftrial: 'state',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             }
         }
 
@@ -86,9 +86,9 @@
             ],
             data: {
                 typeoftrial: 'response',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             },
             on_finish: function(data){
                 console.log(typeof data.response.Q0)
@@ -130,24 +130,24 @@
 
         var practice_end = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: 'This is the end of the practice session. From here, you will begin the real trials.',
+            stimulus: 'This is the end of the practice session. From here, you will begin the real trials. Click any key to continue.',
             data: {
                 typeoftrial: 'instructions',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             }
         };
 
 
         var end_experiment = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: 'Thank you for participating in our study!',
+            stimulus: 'Thank you for participating in our study! Click any key to finish.',
             data: {
                 typeoftrial: 'end of experiment',
-                list_number: jsPsych.timelineVariable('list'),
-                trialcondition: jsPsych.timelineVariable('prime_condition'),
-                subject: subject_id
+                list: jsPsych.timelineVariable('list'),
+                prime_condition: jsPsych.timelineVariable('prime_condition'),
+                subject_id: subject_id
             }
         }
         
